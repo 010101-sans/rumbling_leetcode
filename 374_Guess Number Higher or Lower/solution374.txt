@@ -1,0 +1,32 @@
+# The guess API is already defined for you.
+# @param num, your guess
+# @return -1 if num is higher than the picked number
+#          1 if num is lower than the picked number
+#          otherwise return 0
+# def guess(num):
+
+import random as rm
+
+class Solution(object):
+
+    def guessNumber(self, n):
+
+        min = 1
+        max = n
+
+        while True:
+
+            my_guess = rm.randrange(min, max+1)
+            status = guess(my_guess)
+
+            if status == 0:
+                return my_guess
+            elif status == -1:
+                max = my_guess - 1
+            elif status ==  1:
+                min = my_guess + 1
+        
+        """
+        :type n: int
+        :rtype: int
+        """

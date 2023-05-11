@@ -1,0 +1,29 @@
+class Solution(object):
+
+    def reverse(self, x):
+        
+        x_str = str(x)
+        
+        x_rev_str = x_str[::-1]
+        
+        x_rev_str_list = list(x_rev_str)
+
+        if '-' in x_rev_str_list:
+            x_rev_str_list.remove('-')
+            
+        x_rev_str = ''.join(x_rev_str_list)
+        
+        x_rev_int = int(x_rev_str)
+        
+        if x<0: x_rev_int *= -1
+        
+        if ((-2**31) <= x_rev_int <= (2**31-1)):
+            return x_rev_int
+        else:
+            return 0
+        
+        """
+        :type x: int
+        :rtype: int
+        """
+        

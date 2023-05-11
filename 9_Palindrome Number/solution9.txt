@@ -1,0 +1,34 @@
+bool isPalindrome(int x){
+    
+    int isPal = 1;
+    int digits[10];
+    int size = 0;
+    
+    if (x<0) {
+
+        return false;
+        
+    } else {
+
+        long temp = x;
+
+        while (temp!=0) {
+
+            digits[size++] = temp % 10;
+            temp = temp/10;
+        }
+
+        for (int i=0; i<size; i++) {
+            if (digits[i] != digits[(size-1)-i]) {
+                isPal = 0;
+                break;
+            }
+        }
+
+        if (isPal) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}

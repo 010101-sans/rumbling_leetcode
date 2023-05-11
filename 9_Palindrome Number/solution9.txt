@@ -13,7 +13,6 @@ bool isPalindrome(int x){
         long temp = x;
 
         while (temp!=0) {
-
             digits[size++] = temp % 10;
             temp = temp/10;
         }

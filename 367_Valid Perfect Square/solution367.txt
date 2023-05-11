@@ -1,0 +1,14 @@
+class Solution(object):
+
+    def isPerfectSquare(self, num):
+
+        if isinstance(num, float):
+            return False
+
+        sqrt = int(num**(1/2))
+        return sqrt**2 == num
+        
+        """
+        :type num: int
+        :rtype: bool
+        """

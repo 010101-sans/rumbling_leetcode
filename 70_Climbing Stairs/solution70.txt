@@ -1,0 +1,28 @@
+from math import factorial as facto
+
+class Solution(object):
+
+    def permutations(self, n, count_1, count_2):
+        return facto(n) // (facto(count_1) * facto(count_2))
+
+    def climbStairs(self, n):
+
+        ls = [1] * n
+
+        nos = 1 # number_of_solution
+
+        while ls.count(1) >= 2:
+            
+            ls.remove(1)
+            ls.remove(1)
+            ls.append(2)
+
+            nos += self.permutations(len(ls), ls.count(1), ls.count(2))
+
+        return nos
+
+
+        """
+        :type n: int
+        :rtype: int
+        """

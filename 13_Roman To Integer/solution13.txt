@@ -1,0 +1,85 @@
+class Solution(object):
+    
+    def romanToInt(self, s):
+        
+        I = 1
+        V = 5
+        X = 10
+        L = 50
+        C = 100
+        D = 500
+        M = 1000
+        
+        result = 0
+        index  = 0
+        
+        while index < len(s):
+            
+            if index == len(s)-1:
+                if s[index] == 'I': 
+                    result += I  
+                elif s[index] == 'V': 
+                    result += V  
+                elif s[index] == 'X': 
+                    result += X  
+                elif s[index] == 'L': 
+                    result += L  
+                elif s[index] == 'C': 
+                    result += C  
+                elif s[index] == 'D': 
+                    result += D  
+                elif s[index] == 'M': 
+                    result += M  
+            
+            elif s[index] == 'I':
+                
+                if s[index+1] == 'V':
+                    result += V - I
+                    index  += 1
+                elif s[index+1] == 'X':
+                    result += X - I
+                    index  += 1
+                else:
+                    result += I
+                    
+            elif s[index] == 'V':
+                result += V
+                
+            elif s[index] == 'X':
+                if s[index+1] == 'L':
+                    result += L - X
+                    index  += 1
+                elif s[index+1] == 'C':
+                    result += C - X
+                    index  += 1
+                else:
+                    result += X
+            
+            elif s[index] == 'L':
+                result += L
+                
+            elif s[index] == 'C':
+                if s[index+1] == 'D':
+                    result += D - C
+                    index  += 1
+                elif s[index+1] == 'M':
+                    result += M - C
+                    index  += 1
+                else:
+                    result += C
+                    
+            elif s[index] == 'D':
+                result += D
+                
+            elif s[index] == 'M':
+                result += M
+            
+            index += 1
+        
+        return result
+        
+        """
+        :type s: str
+        :rtype: int
+        """
+        

@@ -21,13 +21,13 @@ struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* list2){
     } else if (list1->next==NULL && list2->next==NULL) {
 
         resHead = (struct ListNode*) malloc (sizeof (struct ListNode));
+        
         if (list1->val >= list2->val) { 
             resHead->val = list2->val; 
             resHead->next = (struct ListNode*) malloc (sizeof (struct ListNode));
             resHead->next->val = list1->val; 
             resHead->next->next = NULL; 
-        } 
-        else                          { 
+        } else { 
             resHead->val = list1->val; 
             resHead->next = (struct ListNode*) malloc (sizeof (struct ListNode));
             resHead->next->val = list2->val; 

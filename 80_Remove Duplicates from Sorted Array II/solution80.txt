@@ -1,0 +1,13 @@
+class Solution(object):
+    def removeDuplicates(self, nums):
+        
+        for ele in nums:
+            while nums.count(ele) > 2:
+                nums.remove(ele)
+
+        return len(nums)        
+        
+        """
+        :type nums: List[int]
+        :rtype: int
+        """

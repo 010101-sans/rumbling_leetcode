@@ -1,0 +1,25 @@
+class Solution(object):
+
+    def wordPattern(self, pattern, s):
+
+        s = s.split(' ')   # list of words
+
+        if len(pattern) != len(s):
+            return False
+
+        pattern_dict = {}  # to hold the index-wise mapping from pattern to s
+
+        for alpha, word in zip(pattern, s):
+            # if {alpha:word} pair is not found in dict, then add it
+            if alpha not in pattern_dict.keys():
+                if word not in pattern_dict.values():
+                    pattern_dict[alpha] = word
+                else:
+                    # word is already a value of another key in dict
+                    # i.e. a new {alpha, word} mapping is found and thus
+                    return False
+            else:
+                if pattern_dict[alpha] != word:
+                    return False
+        
+        return True

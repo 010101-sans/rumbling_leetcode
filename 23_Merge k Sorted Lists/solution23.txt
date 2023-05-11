@@ -1,91 +1,40 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     struct ListNode *next;
- * };
- */
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
 
+class Solution(object):
 
-struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* list2){
+    def mergeKLists(self, lists):
 
-    struct ListNode *i = list1, *j = list2;
-    struct ListNode *nn, *resHead = NULL, *last = NULL;
+        all_elements = []
+        
+        for linked_list in lists:
+            node = linked_list
+            while node is not None:
+                all_elements.append(node.val)
+                node = node.next 
+        
+        all_elements = sorted(all_elements)
+            
 
-    if (list1==NULL && list2==NULL) {
-        return resHead;
-    } else if (list1==NULL && list2!=NULL) {
-        return list2;
-    } else if (list2==NULL && list1!=NULL) {
-        return list1;
-    } else if (list1->next==NULL && list2->next==NULL) {
+        first_node = None
+        last_node = None
+        
+        for i in range(len(all_elements)):
+            
+            if first_node==None and last_node==None:
+                last_node = first_node = ListNode(all_elements.pop(0), None)
 
-        resHead = (struct ListNode*) malloc (sizeof (struct ListNode));
-        if (list1->val >= list2->val) { 
-            resHead->val = list2->val; 
-            resHead->next = (struct ListNode*) malloc (sizeof (struct ListNode));
-            resHead->next->val = list1->val; 
-            resHead->next->next = NULL; 
-        } 
-        else                          { 
-            resHead->val = list1->val; 
-            resHead->next = (struct ListNode*) malloc (sizeof (struct ListNode));
-            resHead->next->val = list2->val; 
-            resHead->next->next = NULL; 
-        }
-        return resHead;
-
-    } else {
-
-        while (i!=NULL || j!=NULL) {
-
-            if (i==NULL & j!=NULL) {
-                nn = (struct ListNode*) malloc(sizeof (struct ListNode));
-                nn->next = NULL;
-                nn->val = j->val;
-                if (resHead==NULL && last==NULL) { resHead = last = nn; }
-                else                             { last->next=nn; last = nn;}
-                j = j->next;
-
-            } else if (j==NULL && i!=NULL) {
-
-                nn = (struct ListNode*) malloc(sizeof (struct ListNode));
-                nn->next = NULL;
-                nn->val = i->val;
-                if (resHead==NULL && last==NULL) { resHead = last = nn; }
-                else                             { last->next=nn; last = nn;}
-                i = i->next;
-
-            } else if (i->val == j->val) {
-   
-                nn = (struct ListNode*) malloc(sizeof (struct ListNode));  nn->val=i->val;
-                if (resHead==NULL && last==NULL) { last = resHead = nn; }
-                else                             { last->next=nn; last=nn; }
-
-                nn = (struct ListNode*) malloc(sizeof (struct ListNode));  nn->val=j->val;
-                last->next=nn; last=nn;
-                nn->next = NULL;
-
-                i = i->next;
-                j = j->next;
-
-            } else {
-
-                nn = (struct ListNode*) malloc(sizeof (struct ListNode));
-                nn->next = NULL;
-
-                if (i->val < j->val)        { nn->val = i->val;  i = i->next; }
-                else if (j->val < i->val)   { nn->val = j->val;  j = j->next; }
-
-                if (resHead == NULL && last == NULL) {
-                    last = resHead = nn;
-                } else {
-                    last->next = nn;
-                    last = nn;
-                }
-            }
-        }
-    }
-
-    return resHead;
-}
+            else:
+                last_node.next = ListNode(all_elements.pop(0), None)
+                last_node = last_node.next
+                
+        return first_node
+        
+        """
+        :type lists: List[ListNode]
+        :rtype: ListNode
+        """
+        

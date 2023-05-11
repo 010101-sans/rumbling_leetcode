@@ -1,0 +1,26 @@
+class Solution(object):
+
+    def fib(self, n):
+        
+        if n==0 or n==1: 
+            return n
+        
+        n1=0
+        n2=1
+        n3=n1+n2
+
+        pos=2
+        
+        while (pos<n):
+            n1 = n2
+            n2 = n3
+            n3 = n1+n2
+            pos += 1
+            
+        return n3
+        
+        """
+        :type n: int
+        :rtype: int
+        """
+        

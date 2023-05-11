@@ -1,0 +1,21 @@
+class Solution:
+
+    # @param n, an integer
+    # @return an integer
+
+    def reverseBits(self, n):
+        
+        n = bin(n)[2:]
+
+        
+        while len(n) != 32:
+            n = '0' + n
+
+        
+        n = list(n)
+        
+        n.reverse()
+
+        n = "".join(n)
+
+        return int(n, 2)

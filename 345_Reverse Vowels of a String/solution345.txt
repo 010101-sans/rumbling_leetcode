@@ -1,0 +1,25 @@
+class Solution(object):
+
+    def reverseVowels(self, s):
+
+        s = list(s)
+
+        pov = [] # positions_of_vowels
+
+        for i in range(len(s)):
+            if s[i] in "AEIOUaeiou":
+                pov.append(i)
+
+        l = len(pov)
+
+        for i in range(l//2):
+            temp = s[pov[i]]
+            s[pov[i]] = s[pov[l-1-i]]
+            s[pov[l-i-1]] = temp
+
+        return "".join(s)
+
+        """
+        :type s: str
+        :rtype: str
+        """

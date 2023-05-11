@@ -1,0 +1,15 @@
+class Solution(object):
+
+    def mySqrt(self, x):        
+        res = 0
+        while res*res<=x:
+            if (res+1)*(res+1) >x:
+                break
+            res += 1
+        return res
+    
+        """
+        :type x: int
+        :rtype: int
+        """
+        

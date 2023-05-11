@@ -31,8 +31,7 @@ class Solution(object):
                 elif s[index] == 'M': 
                     result += M  
             
-            elif s[index] == 'I':
-                
+            elif s[index] == 'I':   
                 if s[index+1] == 'V':
                     result += V - I
                     index  += 1

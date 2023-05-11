@@ -1,0 +1,14 @@
+class Solution(object):
+    
+    def firstUniqChar(self, s):
+
+        for alpha in s:
+            if s.count(alpha) == 1:
+                return s.index(alpha)
+
+        return -1
+
+        """
+        :type s: str
+        :rtype: int
+        """

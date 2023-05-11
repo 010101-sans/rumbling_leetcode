@@ -17,5 +17,5 @@
 
 ##### So, let us begin the Rumbling, and let the world tremble at our feet. Let 
 ##### them witness the power of Eldia, the power of the Titans, and the power of 
-##### our unbreakable will. Together, we will emerge victorious, and the world 
+##### our unbreakable will. Together, we'll emerge victorious, and the world 
 ##### will know that the Eldian Empire has risen once again.

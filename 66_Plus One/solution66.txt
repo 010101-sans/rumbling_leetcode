@@ -1,0 +1,22 @@
+class Solution(object):
+
+    def plusOne(self, digits):
+
+        input_num = ""
+        for digit in digits:
+            input_num += str(digit)
+
+        input_num = str(eval(input_num)+1)
+
+        digits = []
+
+        for digit in input_num:
+            digits.append(digit)
+            
+        return [int(digit) for digit in digits]
+        
+        """
+        :type digits: List[int]
+        :rtype: List[int]
+        """
+        

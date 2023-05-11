@@ -1,0 +1,21 @@
+class Solution(object):
+
+    def arrangeCoins(self, n):
+
+        assigned_coins = 0
+        current_row = 1
+
+        while True:
+            assigned_coins += current_row
+            current_row += 1
+            if assigned_coins + current_row > n:
+                break
+
+        k = current_row-1
+
+        return k
+        
+        """
+        :type n: int
+        :rtype: int
+        """

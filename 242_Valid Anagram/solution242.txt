@@ -1,0 +1,21 @@
+class Solution(object):
+
+    def isAnagram(self, s, t):
+
+        if len(s) != len(t):
+            return False
+        else:
+            all_unique_elements = set(t)
+
+            for alpha in all_unique_elements:
+                if (t.count(alpha)) != (s.count(alpha)):
+                    return False
+            
+            return True
+
+
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """

@@ -1,0 +1,16 @@
+class Solution(object):
+
+    def findComplement(self, num):
+    
+        num = bin(num)[2:]
+    
+        num = num.replace('0', 'z')
+        num = num.replace('1', '0')
+        num = num.replace('z', '1')
+
+        return int(num, 2)
+
+        """
+        :type num: int
+        :rtype: int
+        """

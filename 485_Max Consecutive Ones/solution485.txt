@@ -1,0 +1,19 @@
+class Solution(object):
+
+    def findMaxConsecutiveOnes(self, nums):
+    
+        nums = [str(ele) for ele in nums]
+        nums = "".join(nums)
+        nums = nums.split('0')
+
+        max_consecutive_ones = len(nums[0])
+        for i in range(1, len(nums)):
+            if max_consecutive_ones < len(nums[i]):
+                max_consecutive_ones = len(nums[i])
+
+        return max_consecutive_ones
+
+        """
+        :type nums: List[int]
+        :rtype: int
+        """

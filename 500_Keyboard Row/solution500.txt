@@ -1,0 +1,33 @@
+class Solution(object):
+
+    def get_row(self, alpha):
+
+        kb_rows = {
+            1 : "qwertyuiopQWERTYUIOP",
+            2 : "asdfghjklASDFGHJKL",
+            3 : "zxcvbnmZXCVBNM"
+        }
+        if   alpha in kb_rows[1]: return 1
+        elif alpha in kb_rows[2]: return 2
+        elif alpha in kb_rows[3]: return 3
+        
+
+    def findWords(self, words):
+
+        words_formed_by_one_row_only = []
+
+        for word in words:
+            current_row = self.get_row(word[0])
+            for alpha in word[1:]:
+                alpha_row = self.get_row(alpha)
+                if current_row != alpha_row:
+                    break
+            else:
+                words_formed_by_one_row_only.append(word)
+        
+        return words_formed_by_one_row_only
+    
+        """
+        :type words: List[str]
+        :rtype: List[str]
+        """

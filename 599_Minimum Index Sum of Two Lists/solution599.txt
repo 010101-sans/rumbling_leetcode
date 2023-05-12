@@ -1,0 +1,27 @@
+class Solution(object):
+
+    def findRestaurant(self, list1, list2):
+    
+        common_words = {}
+
+        min_index_sum = 11111
+        for word in list1:
+            if word in list2:
+                common_words[word] = list1.index(word) + list2.index(word)
+                if min_index_sum > common_words[word]:
+                    min_index_sum = common_words[word]
+
+        answer_strings = []
+        for word in common_words.keys():
+            if common_words[word] == min_index_sum:
+                answer_strings.append(word)
+        
+        return answer_strings
+
+
+
+        """
+        :type list1: List[str]
+        :type list2: List[str]
+        :rtype: List[str]
+        """

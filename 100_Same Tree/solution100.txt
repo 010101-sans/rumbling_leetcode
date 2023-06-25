@@ -1,0 +1,49 @@
+# Definition for a binary tree node.
+
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+class Solution(object):
+
+    # The approach i'm thinking about
+    # perform preorder traversal on both tree
+    # collect elements of both trees in different lists
+    # compare if both are exactly same or not, that's it
+
+    def isSameTree(self, p, q):
+
+        first_tree = []
+        second_tree = []
+    
+        def iot_for_first_tree(p):
+            if p is None:
+                first_tree.append(None)
+            else:
+                first_tree.append(p.val)
+                iot_for_first_tree(p.left)
+                iot_for_first_tree(p.right)
+
+        def iot_for_second_tree(q):
+            if q is None:
+                second_tree.append(None)
+            else:
+                second_tree.append(q.val)
+                iot_for_second_tree(q.left)
+                iot_for_second_tree(q.right)
+
+        first_tree = []
+        second_tree = []
+
+        iot_for_first_tree(p)
+        iot_for_second_tree(q)
+
+        return first_tree == second_tree
+
+        """
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: bool
+        """

@@ -1,0 +1,36 @@
+class Solution(object):
+
+    def convertToTitle(self, columnNumber):
+
+        n = columnNumber
+        column_title = ""
+
+        while n>0:                                                             
+            n -= 1                                            
+            rem = n%26                                        
+            column_title = chr(rem + ord('A')) + column_title 
+            n //= 26
+     
+        return column_title
+     
+        # say n = 28 i.e. title="AB"
+
+        # iteration_1 
+        # n = 27  
+        # rem = 1 
+        # column_title = B+""
+        # n = 1 (note : // is just normal division without fractional part of result)
+
+        # iteration_2
+        # n = 0
+        # rem = 0 % 26 = 0
+        # column_title = "A" + "B" = "AB"
+        # n = 0
+
+        # loop stops
+
+
+        """
+        :type columnNumber: int
+        :rtype: str
+        """

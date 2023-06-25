@@ -1,0 +1,20 @@
+class Solution(object):
+
+    def countSegments(self, s):
+    
+        s = s.strip()
+
+        if s == '': 
+            return 0
+
+        lst = s.split(' ')
+
+        while '' in lst:
+            lst.remove('')
+
+        return len(lst)
+    
+        """
+        :type s: str
+        :rtype: int
+        """

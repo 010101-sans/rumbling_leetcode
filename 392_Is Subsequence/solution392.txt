@@ -1,0 +1,19 @@
+class Solution(object):
+
+    def isSubsequence(self, s, t):
+    
+        str_to_compare = t[:]
+
+        for alpha in s:
+            if alpha not in str_to_compare:
+                return False
+            str_to_compare = str_to_compare[str_to_compare.index(alpha)+1:]
+            
+
+        return True
+    
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """

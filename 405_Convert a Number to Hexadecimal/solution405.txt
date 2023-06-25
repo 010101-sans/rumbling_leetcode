@@ -1,0 +1,26 @@
+class Solution(object):
+
+    def toHex(self, num):
+
+        if num == 0:
+            return '0'  
+
+        hex_digits = '0123456789ABCDEF'
+        hex_string = ''
+
+        if num < 0:
+            num += 2**32  
+
+        while num > 0:
+            remainder = num % 16
+            hex_string = hex_digits[remainder] + hex_string
+            num //= 16
+
+        return hex_string.lower()
+
+
+
+        """
+        :type num: int
+        :rtype: str
+        """

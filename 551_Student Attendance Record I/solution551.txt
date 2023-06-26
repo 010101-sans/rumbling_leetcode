@@ -1,0 +1,19 @@
+class Solution(object):
+
+    def checkRecord(self, s):
+    
+        is_criteria_1_satisfied = (s.count('A') < 2)
+        is_criteria_2_satisfied = (s.find('LLL') == -1)
+
+        print(is_criteria_1_satisfied)
+        print(is_criteria_2_satisfied)
+
+        if is_criteria_1_satisfied and is_criteria_2_satisfied:
+            return True
+        else:
+            return False
+
+        """
+        :type s: str
+        :rtype: bool
+        """

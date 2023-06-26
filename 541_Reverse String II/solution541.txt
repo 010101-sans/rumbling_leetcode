@@ -1,0 +1,20 @@
+class Solution(object):
+
+    def reverseStr(self, s, k):
+
+        lst = []
+
+        for i in range(0, len(s), 2*k):
+
+            str_to_rev = s[i:i+k][::-1]
+            lst.append(str_to_rev)
+            lst.append(s[i+k : i+2*k])
+
+        return ''.join(lst)        
+
+
+        """
+        :type s: str
+        :type k: int
+        :rtype: str
+        """

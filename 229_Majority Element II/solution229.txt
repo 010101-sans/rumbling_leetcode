@@ -1,0 +1,18 @@
+class Solution(object):
+
+    def majorityElement(self, nums):
+    
+        n = len(nums)
+
+        elements = []
+
+        for ele in sorted(set(nums)):
+            if nums.count(ele) > n/3:
+                elements.append(ele)
+    
+        return elements
+
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """        

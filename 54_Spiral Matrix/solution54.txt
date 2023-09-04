@@ -1,0 +1,64 @@
+class Solution(object):
+
+    def spiralOrder(self, matrix):
+        
+        spiral_order = []
+        
+        number_of_total_ele = len(matrix) * len(matrix[0])
+
+        number_added_ele = 0
+        
+        # the bizzare plan : (note that we have to travel in "clock-wise" spiral order)
+        
+        # repeat this until matrix is empty
+        while True:
+
+            if number_added_ele == number_of_total_ele: break
+
+            # step_1_a : add elements of upper-most row in spiral_order list
+            spiral_order.extend(matrix[0])
+            number_added_ele += len(matrix[0])
+
+            # step_1_a : remove upper-most row of matrix
+            matrix.pop(0)
+
+            if number_added_ele == number_of_total_ele: break
+            
+            # step_2_a : add elements of right-most col in spiral_order list
+            for row_index in range(len(matrix)):
+                spiral_order.append(matrix[row_index][-1])
+                number_added_ele += 1
+
+            # step_2_b : remove right-most col of matrix
+            for row in matrix:
+                row.pop(-1)
+
+            if number_added_ele == number_of_total_ele: break
+            
+            # step_3_a : add elements of bottom-most row (in reversed order) in spiral_order list
+            spiral_order.extend(reversed(matrix[-1]))
+            number_added_ele += len(matrix[-1])
+
+            # step_3_b : remove bottom-most row of matrix
+            matrix.pop(-1)
+
+            if number_added_ele == number_of_total_ele: break
+            
+            # step_4_a : add elements of left-most col (in reversed order) in spiral_order list
+            for row_index in range(len(matrix)-1, -1, -1):
+                spiral_order.append(matrix[row_index][0])
+                number_added_ele += 1
+
+            # step_4_b : remove left-most col of matrix
+            for row in matrix:
+                row.pop(0)
+                
+            if number_added_ele == number_of_total_ele: break
+
+        return spiral_order
+
+
+        """
+        :type matrix: List[List[int]]
+        :rtype: List[int]
+        """

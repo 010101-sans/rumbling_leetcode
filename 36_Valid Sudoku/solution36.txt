@@ -1,0 +1,50 @@
+class Solution(object):
+
+    def isValidSudoku(self, board):
+
+        # check for valid rows
+        
+        for row in board:
+
+            for ele in row:
+                
+                if (ele != '.' and row.count(ele)>1):
+                    return False
+                
+        # check for valid columns
+        
+        for col in range(0,9):
+            
+            current_col_ele = []
+            for row in board:
+                current_col_ele.append(row[col])
+                
+            for row in board:
+                
+                if (row[col] != '.' and current_col_ele.count(row[col]) > 1):
+                    return False
+                
+        # check for valid 3x3 sub-grids
+        
+        for row in range(0,9,3):
+            
+            for col in range(0,9,3):
+                
+                sub_grid_ele = []
+                
+                for i in range(row, row+3):
+                    for j in range(col, col+3):
+                        sub_grid_ele.append(board[i][j])
+                        
+                for ele in sub_grid_ele:
+                                        
+                    if (ele!='.' and sub_grid_ele.count(ele)>1):
+                        return False
+                    
+        return True
+
+        """
+        :type board: List[List[str]]
+        :rtype: bool
+        """
+        

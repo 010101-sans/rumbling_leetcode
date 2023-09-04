@@ -1,0 +1,47 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+class Solution(object):
+
+    def sortList(self, head):
+
+        # if there is no element
+        if head == None:
+            return None
+
+        # if there is only one element
+        elif head.next == None:
+            return head
+
+        # otherwise, collect all the elements
+        all_ele = []
+
+        temp = head
+        while temp != None:
+            all_ele.append(temp.val)
+            temp = temp.next
+
+        head = None
+        last = None
+
+        # form linked-list of sorted elements
+        for ele in sorted(all_ele):
+
+            if head == None:
+                head = ListNode(ele)
+                last = head
+
+            else:
+                last.next = ListNode(ele)
+                last = last.next    
+
+        return head
+
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        

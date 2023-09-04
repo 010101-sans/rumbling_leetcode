@@ -1,0 +1,53 @@
+class Solution(object):
+
+    def generateMatrix(self, n):
+
+        matrix = []
+        for i in range(n):
+            matrix.append([0] * n)
+
+        current_toAdd_ele = 1
+
+        row_indices = list(range(n))
+        col_indices = list(range(n))
+        
+        while True:
+
+            if current_toAdd_ele == n*n+1: break
+            
+            # upper-most-row
+            for j in range(col_indices[0], col_indices[-1]+1):
+                matrix[row_indices[0]][j] = current_toAdd_ele
+                current_toAdd_ele += 1
+            row_indices.pop(0)
+
+            if current_toAdd_ele == n*n+1: break
+            
+            # right-most-col
+            for i in range(row_indices[0], row_indices[-1]+1):
+                matrix[i][col_indices[-1]] = current_toAdd_ele
+                current_toAdd_ele += 1
+            col_indices.pop(-1)
+
+            if current_toAdd_ele == n*n+1: break
+        
+            # bottom-most-row (reverse)
+            for j in range(col_indices[-1], col_indices[0]-1, -1):
+                matrix[row_indices[-1]][j] = current_toAdd_ele
+                current_toAdd_ele += 1
+            row_indices.pop(-1)
+
+            if current_toAdd_ele == n*n+1: break
+        
+            # left-most-col (reverse)
+            for i in range(row_indices[-1], row_indices[0]-1, -1):
+                matrix[i][col_indices[0]] = current_toAdd_ele
+                current_toAdd_ele += 1
+            col_indices.pop(0)
+        
+        return matrix
+        
+        """
+        :type n: int
+        :rtype: List[List[int]]
+        """

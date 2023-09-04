@@ -1,0 +1,27 @@
+class Solution(object):
+    
+    def setZeroes(self, matrix):
+
+        all_rows_containing_zeroes = []
+        all_cols_containing_zeroes = []
+
+        for i in range(len(matrix)):
+            for j in range(len(matrix[i])):
+                if (matrix[i][j] == 0):
+                    all_rows_containing_zeroes.append(i)
+                    all_cols_containing_zeroes.append(j)
+        
+        for i in all_rows_containing_zeroes:
+            for j in range(len(matrix[i])):
+                matrix[i][j] = 0
+                
+        for j in all_cols_containing_zeroes:
+            for row in matrix:
+                row[j] = 0
+                    
+        """
+        :type matrix: List[List[int]]
+        :rtype: None Do not return anything, 
+                modify matrix in-place instead.
+        """
+        

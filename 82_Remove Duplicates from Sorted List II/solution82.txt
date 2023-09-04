@@ -1,0 +1,48 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+class Solution(object):
+
+    def deleteDuplicates(self, head):
+
+        # collect all elements
+
+        all_ele = []
+        
+        temp = head
+        while temp != None:
+            all_ele.append(temp.val)
+            temp = temp.next
+            
+        if len(all_ele) in (0, 1):
+            return head
+
+        # remove elements with frequencey > 1
+
+        number_freq = {}
+        
+        for ele in all_ele:
+            ele_count = all_ele.count(ele)
+            if (ele_count == 1):
+                number_freq[ele] = ele_count
+        
+        head = None
+        last = None
+
+        for ele in sorted(number_freq.keys()):
+            if head == None:
+                head = ListNode(ele)
+                last = head
+            else:
+                last.next = ListNode(ele)
+                last = last.next
+
+        return head
+
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """

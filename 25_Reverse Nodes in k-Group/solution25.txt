@@ -1,0 +1,52 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+class Solution(object):
+
+    def reverseKGroup(self, head, k):
+
+        all_ele = []
+        temp = head
+        while temp != None:
+            all_ele.append(temp.val)
+            temp = temp.next
+        
+        all_ele_length = len(all_ele)
+        
+        if all_ele_length in range(0, k):
+            return head
+        
+        all_k_groups = []
+        for i in range(0, all_ele_length, k):
+            try: all_k_groups.append(all_ele[i:i+k])
+            except: all_k_groups.append(all_ele[i:])
+            
+        all_reversed_k_groups = []
+        for group in all_k_groups:
+            if len(group) == k:
+                all_reversed_k_groups.extend(reversed(group))
+            else:
+                all_reversed_k_groups.extend(group)
+            
+        head = None
+        last = None
+        for ele in all_reversed_k_groups:
+            
+            if head == None:
+                head = ListNode(ele)
+                last = head
+            else:
+                last.next = ListNode(ele)
+                last = last.next
+        
+        return head
+
+        """
+        :type head: ListNode
+        :type k: int
+        :rtype: ListNode
+        """
+        

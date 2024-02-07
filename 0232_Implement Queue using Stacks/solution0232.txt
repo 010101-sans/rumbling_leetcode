@@ -1,0 +1,41 @@
+class MyQueue(object):
+
+    def __init__(self):
+        self.queue_using_stack = []
+        
+
+    def push(self, x):
+        self.queue_using_stack.append(x)
+        """
+        :type x: int
+        :rtype: None
+        """
+        
+
+    def pop(self):
+        return self.queue_using_stack.pop(0)
+        """
+        :rtype: int
+        """
+        
+
+    def peek(self):
+        return self.queue_using_stack[0]
+        """
+        :rtype: int
+        """
+        
+
+    def empty(self):
+        return len(self.queue_using_stack) == 0
+        """
+        :rtype: bool
+        """
+        
+
+# Your MyQueue object will be instantiated and called as such:
+# obj = MyQueue()
+# obj.push(x)
+# param_2 = obj.pop()
+# param_3 = obj.peek()
+# param_4 = obj.empty()

@@ -1,0 +1,24 @@
+import math
+
+class Solution(object):
+
+    def trailingZeroes(self, n):
+    
+        n_facto = math.factorial(n)
+
+        n_facto = str(n_facto)
+
+        zero_count = 0
+
+        for i in range(len(n_facto)-1, -1, -1):
+            if n_facto[i] != '0':
+                break
+            elif n_facto[i] == '0':
+                zero_count += 1
+
+        return zero_count
+    
+        """
+        :type n: int
+        :rtype: int
+        """    

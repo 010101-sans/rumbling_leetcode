@@ -1,0 +1,76 @@
+class Solution(object):
+
+    def islandPerimeter(self, grid):
+    
+        row_count = len(grid)
+        col_count = len(grid[0])
+        perimeter = 0
+        
+        def is_left_most_cell(row,col): return col==0
+        def is_left_cell_zero(row,col): return grid[row][col-1] == 0
+        def is_right_most_cell(row,col): return col == len(grid[0])-1
+        def is_right_cell_zero(row,col): return grid[row][col+1] == 0
+        def is_above_cell_zero(row,col): return grid[row-1][col] == 0
+        def is_top_row(row,col): return row==0
+        def is_bottom_row(row,col): return row==len(grid)-1
+        
+        # check for single row
+        if row_count == 1:
+            # check for single column
+            if col_count == 1:
+                # check if that single cell has value 0 or 1
+                if grid[0][0] == 1:
+                    perimeter = 4
+                else: 
+                    perimeter = 0
+            # more than single columns
+            else: 
+                perimeter = (grid[0].count(1) * 2) + 2
+        # more than single rows
+        else:
+
+            # iterate for each element in each row
+            for i in range(row_count):
+                for j in range(col_count):
+
+                    # current ele is 0
+                    if grid[i][j] == 0:
+                        if not is_above_cell_zero(i,j) and not is_top_row(i,j):
+                            perimeter+=1
+
+                    # current ele is 1
+                    else:
+                        # current row is the top row
+                        if is_top_row(i,j):
+                            perimeter+=1
+                            if is_left_most_cell(i,j) or is_left_cell_zero(i,j):
+                                perimeter+=1
+                            if is_right_most_cell(i,j) or is_right_cell_zero(i,j):
+                                perimeter+=1
+
+                        # current row is the somewhere middle row
+                        elif (not is_top_row(i,j)) and (not is_bottom_row(i,j)):
+                            if is_left_most_cell(i,j) or is_left_cell_zero(i,j):
+                                perimeter+=1
+                            if is_above_cell_zero(i,j):
+                                perimeter+=1
+                            if is_right_most_cell(i,j) or is_right_cell_zero(i,j):
+                                perimeter+=1
+                            
+                        # current row is the bottom row
+                        elif is_bottom_row(i,j):
+                            perimeter+=1
+                            if is_left_most_cell(i,j) or is_left_cell_zero(i,j):
+                                perimeter+=1
+                            if is_above_cell_zero(i,j):
+                                perimeter+=1
+                            if is_right_most_cell(i,j) or is_right_cell_zero(i,j):
+                                perimeter+=1
+                    
+        return perimeter           
+            
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        
